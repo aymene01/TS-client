@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
-import {signin} from './components/signin';
-import {signup} from './components/signup';
+
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import profile from './components/profile'
+
+import splashscreen from './screens/splashscreen';
+import login from './screens/login';
+import register from './screens/register';
 
 
 
@@ -13,21 +15,25 @@ import profile from './components/profile'
 
 
 
-const Stack = createStackNavigator();
 
-function App() {
+
+export default function App() {
+  const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={signin} />
+      <Stack.Navigator  initialRouteName='splashscreen'screenOptions={{headerShown: false}}>
+        <Stack.Screen name="splashscreen" component={splashscreen} />
+        <Stack.Screen name="Login" component={login} />
+        <Stack.Screen name="Register" component={register} />
+        
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
 
       
-export default App;
+
 
 
 
